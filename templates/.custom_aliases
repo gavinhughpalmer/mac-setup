@@ -1,0 +1,107 @@
+alias zshconfig="sudo code ~/.zshrc"
+alias ohmyzsh="sudo nano ~/.oh-my-zsh"
+alias meld="open -a meld"
+alias jenkins-up="docker-compose -p jenkins up -d"
+alias jenkins-down="docker-compose -p jenkins down"
+alias refresh-terminal="source ~/.zshrc"
+alias edit-aliases="code  ~/.custom_aliases"
+alias refresh-aliases="source ~/.custom_aliases"
+alias pubkey="cat ~/.ssh/id_rsa.pub"
+alias copypk="pubkey | pbcopy"
+alias sfpush="sfdx force:source:push"
+alias sfpull="sfdx force:source:pull"
+alias sftest="sfdx force:apex:test:run --resultformat human -c --wait 6"
+alias sfopen="sfdx force:org:open"
+
+
+mkdir () {
+    command mkdir -p "$@" && cd "$@"
+}
+
+compare() {
+    sourceDir=$1/source
+    targetDir=$1/target
+    echo Comparing $sourceDir to $targetDir
+    open -a meld --args $sourceDir $targetDir
+}
+
+gamsg() {
+    gaa
+    gcmsg $1
+    ggpush
+}
+
+function gi() {
+    curl -L -s https://www.gitignore.io/api/$@
+}
+
+gitignore() {
+    gi node,macos,intellij,salesforce,sublimetext,salesforcedx,visualstudiocode > .gitignore
+}
+
+alias ginit="git init && gitignore"
+
+createbranchs() {
+    for branch in "${branches[@]}"
+    do
+        git checkout -b $branch
+        git push -u origin $branch
+        git checkout master
+    done
+}
+
+function urldecode
+{
+        typeset encoded=$1 decoded= rest= c= c1= c2=
+        typeset rest2= bug='rest2=${rest}'
+        if [[ -z ${BASH_VERSION:-} ]]; then
+                typeset -i16 hex=0; typeset -i8 oct=0
+                # bug /usr/bin/sh HP-UX 11.00
+                typeset _encoded='xyz%26xyz'
+                rest="${_encoded#?}"
+                c="${_encoded%%${rest}}"
+                if (( ${#c} != 1 )); then
+                        typeset qm='????????????????????????????????????????????????????????????????????????'
+                        typeset bug='(( ${#rest} > 0 )) && typeset -L${#rest} rest2="${qm}" || rest2=${rest}'
+                fi
+        fi
+	rest="${encoded#?}"
+	eval ${bug}
+	c="${encoded%%${rest2}}"
+	encoded="${rest}"
+	while [[ -n ${c} ]]; do
+		if [[ ${c} = '%' ]]; then
+			rest="${encoded#?}"
+			eval ${bug}
+			c1="${encoded%%${rest2}}"
+			encoded="${rest}"
+			rest="${encoded#?}"
+			eval ${bug}
+			c2="${encoded%%${rest2}}"
+			encoded="${rest}"
+			if [[ -z ${c1} || -z ${c2} ]]; then
+				c="%${c1}${c2}"
+				echo "WARNING: invalid % encoding: ${c}" >&2
+			elif [[ -n ${BASH_VERSION:-} ]]; then
+				c="\\x${c1}${c2}"
+				c=$(\echo -e "${c}")
+			else
+				hex="16#${c1}${c2}"; oct=hex
+				c="\\0${oct#8\#}"
+				c=$(print -- "${c}")
+			fi
+		elif [[ ${c} = '+' ]]; then
+			c=' '
+		fi
+		decoded="${decoded}${c}"
+		rest="${encoded#?}"
+		eval ${bug}
+		c="${encoded%%${rest2}}"
+		encoded="${rest}"
+	done
+	if [[ -n ${BASH_VERSION:-} ]]; then
+		\echo -E "${decoded}"
+	else
+		print -r -- "${decoded}"
+	fi
+}
