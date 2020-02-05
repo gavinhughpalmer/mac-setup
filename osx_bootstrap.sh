@@ -3,18 +3,6 @@
 # Bootstrap script for setting up a new OSX machine
 #
 # This should be idempotent so it can be run multiple times.
-#
-# Some apps don't have a cask and so still need to be installed by hand. These
-# include:
-#
-# - Twitter (app store)
-# - Postgres.app (http://postgresapp.com/)
-#
-# Notes:
-#
-# - If installing full Xcode, it's better to install that first from the app
-#   store before running the bootstrap script. Otherwise, Homebrew can't access
-#   the Xcode libraries as the agreement hasn't been accepted yet.
 
 echo "Starting bootstrapping"
 
