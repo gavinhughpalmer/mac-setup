@@ -75,7 +75,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git sublime zsh-completions
+  git sublime
 )
 
 source $ZSH/oh-my-zsh.sh

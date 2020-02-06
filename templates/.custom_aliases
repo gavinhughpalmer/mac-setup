@@ -13,7 +13,6 @@ alias sfpull="sfdx force:source:pull"
 alias sftest="sfdx force:apex:test:run --resultformat human -c --wait 6"
 alias sfopen="sfdx force:org:open"
 
-
 function mkdir() {
     command mkdir -p "$@" && cd "$@"
 }
