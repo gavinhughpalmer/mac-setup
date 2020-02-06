@@ -1,17 +1,17 @@
 # If you come from bash you might have to change your $PATH.
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH=$JAVA_HOME:$HOME/bin:/usr/local/bin:/Users/admin-1019/Library/Python/2.7/bin:$PATH:$HOME/bin
-export ANDROID_HOME=/Users/admin-1019/Library/Android/sdk
+export PATH=$JAVA_HOME:$HOME/bin:/usr/local/bin:~/Library/Python/2.7/bin:$PATH:$HOME/bin
+export ANDROID_HOME=~/Library/Android/sdk
 
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram time)
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_MODE='nerdfont-complete'
-source ~/powerlevel9k/powerlevel9k.zsh-theme
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/admin-1019/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # add custom completion scripts
 fpath=(~/workspace/Salesforce/sfdx/salesforce-cli-zsh-completion $fpath)
@@ -75,7 +75,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git sublime zsh-autosuggestions
+  git sublime zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh

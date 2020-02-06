@@ -128,12 +128,16 @@ CASKS=(
     visual-studio-code
     vlc
     wireshark
+    java
 )
 
 echo "Installing cask apps..."
 for CASK in ${CASKS[@]}; do
     brew cask install ${CASK}
 done
+
+brew tap adoptopenjdk/openjdk
+brew cask install adoptopenjdk8
 
 echo "Installing fonts..."
 brew tap caskroom/fonts
@@ -229,7 +233,7 @@ brew install powerlevel9k
 # /usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Cursor Type" 1' ~/Library/Preferences/com.googlecode.iterm2.plist
 
 echo "Installing vs code extensions..."
-CODE_EXTENSIONS = (
+CODE_EXTENSIONS=(
     andys8.jest-snippets
     blzjns.vscode-raml
     chuckjonas.apex-pmd

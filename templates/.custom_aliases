@@ -14,18 +14,18 @@ alias sftest="sfdx force:apex:test:run --resultformat human -c --wait 6"
 alias sfopen="sfdx force:org:open"
 
 
-mkdir () {
+function mkdir() {
     command mkdir -p "$@" && cd "$@"
 }
 
-compare() {
+function compare() {
     sourceDir=$1/source
     targetDir=$1/target
     echo Comparing $sourceDir to $targetDir
     open -a meld --args $sourceDir $targetDir
 }
 
-gamsg() {
+function gamsg() {
     gaa
     gcmsg $1
     ggpush
@@ -35,13 +35,13 @@ function gi() {
     curl -L -s https://www.gitignore.io/api/$@
 }
 
-gitignore() {
+function gitignore() {
     gi node,macos,intellij,salesforce,sublimetext,salesforcedx,visualstudiocode > .gitignore
 }
 
 alias ginit="git init && gitignore"
 
-createbranchs() {
+function createbranchs() {
     for branch in "${branches[@]}"
     do
         git checkout -b $branch
@@ -50,8 +50,7 @@ createbranchs() {
     done
 }
 
-function urldecode
-{
+function urldecode() {
         typeset encoded=$1 decoded= rest= c= c1= c2=
         typeset rest2= bug='rest2=${rest}'
         if [[ -z ${BASH_VERSION:-} ]]; then
