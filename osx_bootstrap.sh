@@ -235,8 +235,8 @@ brew install powerlevel9k
 
 # echo "Configuring iTerm2..."
 /usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Normal Font" HackNerdFontComplete-Regular 12' ~/Library/Preferences/com.googlecode.iterm2.plist
-# /usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Use Non-ASCII Font" false' ~/Library/Preferences/com.googlecode.iterm2.plist
-# /usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Cursor Type" 1' ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Use Non-ASCII Font" false' ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Cursor Type" 1' ~/Library/Preferences/com.googlecode.iterm2.plist
 
 echo "Installing vs code extensions..."
 CODE_EXTENSIONS=(
