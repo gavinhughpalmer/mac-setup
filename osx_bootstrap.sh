@@ -103,9 +103,11 @@ brew cleanup
 
 echo "Installing cask..."
 brew install caskroom/cask/brew-cask
+brew tap adoptopenjdk/openjdk
 
 CASKS=(
     microsoft-office
+    adoptopenjdk8
     spotify
     colluquy
     dropbox
@@ -135,12 +137,6 @@ echo "Installing cask apps..."
 for CASK in ${CASKS[@]}; do
     brew cask install ${CASK}
 done
-
-brew tap adoptopenjdk/openjdk
-brew cask install adoptopenjdk8
-
-
-brew cask install font-hack-nerd-font
 
 echo "Installing fonts..."
 brew tap homebrew/cask-fonts
