@@ -18,13 +18,7 @@ fi
 brew update
 
 # Install GNU core utilities (those that come with OS X are outdated)
-brew tap homebrew/dupes
 brew install coreutils
-brew install gnu-sed --with-default-names
-brew install gnu-tar --with-default-names
-brew install gnu-indent --with-default-names
-brew install gnu-which --with-default-names
-brew install gnu-grep --with-default-names
 
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install findutils
@@ -100,7 +94,9 @@ PACKAGES=(
 )
 
 echo "Installing packages..."
-brew install ${PACKAGES[@]}
+for PACKAGE in ${PACKAGES[@]}; do
+    brew install ${PACKAGE}
+done
 
 echo "Cleaning up..."
 brew cleanup
@@ -135,7 +131,9 @@ CASKS=(
 )
 
 echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
+for CASK in ${CASKS[@]}; do
+    brew cask install ${CASK}
+done
 
 echo "Installing fonts..."
 brew tap caskroom/fonts
@@ -159,7 +157,9 @@ PYTHON_PACKAGES=(
     virtualenv
     virtualenvwrapper
 )
-sudo pip install ${PYTHON_PACKAGES[@]}
+for PYTHON_PACKAGE in ${PYTHON_PACKAGES[@]}; do
+    sudo pip install ${PYTHON_PACKAGE}
+done
 
 echo "Installing Ruby gems"
 RUBY_GEMS=(
@@ -167,7 +167,9 @@ RUBY_GEMS=(
     filewatcher
     cocoapods
 )
-sudo gem install ${RUBY_GEMS[@]}
+for RUBY_GEM in ${RUBY_GEMS[@]}; do
+    sudo gem install ${RUBY_GEM}
+done
 
 echo "Installing global npm packages..."
 npm install marked -g
@@ -213,14 +215,6 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 echo "Creating folder structure..."
 [[ ! -d workspace ]] && mkdir workspace
-
-echo "Installing/updating oh-my-zsh"
-if [[ -d ~/.oh-my-zsh ]]; then
-    upgrade_oh_my_zsh
-else
-    chsh -s /bin/zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
 
 # TODO Pull in my setup from .zshrc file
 
@@ -273,10 +267,19 @@ CODE_EXTENSIONS = (
     vscjava.vscode-maven
     yzhang.markdown-all-in-one
 )
-
-code --install-extension {CODE_EXTENSIONS[@]}
+for CODE_EXTENSION in ${CODE_EXTENSIONS[@]}; do
+    code --install-extension ${CODE_EXTENSION}
+done
 
 mv templates/.zshrc ~/.zshrc
 mv templates/.custom_aliases ~/.custom_aliases
+
+echo "Installing/updating oh-my-zsh"
+if [[ -d ~/.oh-my-zsh ]]; then
+    upgrade_oh_my_zsh
+else
+    chsh -s /bin/zsh
+    "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
 echo "Bootstrapping complete"
