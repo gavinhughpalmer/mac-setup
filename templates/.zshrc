@@ -4,7 +4,7 @@ export PATH=$JAVA_HOME:$HOME/bin:/usr/local/bin:~/Library/Python/2.7/bin:$PATH:$
 export ANDROID_HOME=~/Library/Android/sdk
 
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status user)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(ram time)
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_MODE='nerdfont-complete'
