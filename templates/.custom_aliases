@@ -103,3 +103,11 @@ function urldecode() {
 		print -r -- "${decoded}"
 	fi
 }
+# Conver process builders and flows into the source format
+function convertFlows() {
+    for file in $(find force-app -name "*.flow-meta.xml"); do
+        destination=$(echo $file | sed -E "s/-[0-9]+//")
+        echo "Moving $file to $destination"
+        mv $file $destination
+    done
+}
