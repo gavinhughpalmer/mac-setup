@@ -1,10 +1,10 @@
-alias zshconfig="sudo code ~/.zshrc"
+alias zshconfig="sudo nano ~/.zshrc"
 alias ohmyzsh="sudo nano ~/.oh-my-zsh"
 alias meld="open -a meld"
 alias jenkins-up="docker-compose -p jenkins up -d"
 alias jenkins-down="docker-compose -p jenkins down"
 alias refresh-terminal="source ~/.zshrc"
-alias edit-aliases="code  ~/.custom_aliases"
+alias edit-aliases="nano  ~/.custom_aliases"
 alias refresh-aliases="source ~/.custom_aliases"
 alias pubkey="cat ~/.ssh/id_rsa.pub"
 alias copypk="pubkey | pbcopy"
@@ -12,6 +12,9 @@ alias sfpush="sfdx force:source:push"
 alias sfpull="sfdx force:source:pull"
 alias sftest="sfdx force:apex:test:run --resultformat human -c --wait 6"
 alias sfopen="sfdx force:org:open"
+alias git-prune-check="git branch --remote --merged origin/develop | grep -v 'master' | grep -v 'develop' | grep -v 'release/*' | cut -b 10- | xargs"
+alias git-prune="git branch --remote --merged origin/develop | grep -v 'master' | grep -v 'develop' | grep -v 'release/*' | cut -b 10- | xargs git push --delete origin"
+
 
 function mkdir() {
     command mkdir -p "$@" && cd "$@"
@@ -49,7 +52,7 @@ function createbranchs() {
     done
 }
 
-function urldecode() {
+function urldecode(){
         typeset encoded=$1 decoded= rest= c= c1= c2=
         typeset rest2= bug='rest2=${rest}'
         if [[ -z ${BASH_VERSION:-} ]]; then
@@ -102,12 +105,4 @@ function urldecode() {
 	else
 		print -r -- "${decoded}"
 	fi
-}
-# Conver process builders and flows into the source format
-function convertFlows() {
-    for file in $(find force-app -name "*.flow-meta.xml"); do
-        destination=$(echo $file | sed -E "s/-[0-9]+//")
-        echo "Moving $file to $destination"
-        mv $file $destination
-    done
 }
