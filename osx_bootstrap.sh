@@ -277,8 +277,9 @@ for CODE_EXTENSION in ${CODE_EXTENSIONS[@]}; do
     code --install-extension ${CODE_EXTENSION}
 done
 
-mv templates/.zshrc ~/.zshrc
-mv templates/.custom_aliases ~/.custom_aliases
+cp templates/.zshrc ~/.zshrc
+cp templates/.custom_aliases ~/.custom_aliases
+cp -R templates/.custom_config ~/
 
 echo "Installing/updating oh-my-zsh"
 if [[ -d ~/.oh-my-zsh ]]; then

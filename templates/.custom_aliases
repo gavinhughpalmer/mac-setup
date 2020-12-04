@@ -12,8 +12,9 @@ alias sfpush="sfdx force:source:push"
 alias sfpull="sfdx force:source:pull"
 alias sftest="sfdx force:apex:test:run --resultformat human -c --wait 6"
 alias sfopen="sfdx force:org:open"
-alias git-prune-check="git branch --remote --merged origin/develop | grep -v 'master' | grep -v 'develop' | grep -v 'release/*' | cut -b 10- | xargs"
-alias git-prune="git branch --remote --merged origin/develop | grep -v 'master' | grep -v 'develop' | grep -v 'release/*' | cut -b 10- | xargs git push --delete origin"
+alias git-prune-check="git branch --remote --merged origin/master | grep -v 'master' | grep -v 'develop' | grep -v 'release/*' | cut -b 10-"
+alias git-prune="git-prune-check | xargs git push --delete origin"
+alias licence="cp ~/.custom_config/defaultLicence LICENCE"
 
 
 function mkdir() {
