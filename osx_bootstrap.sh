@@ -26,47 +26,106 @@ brew install findutils
 # Install Bash 4
 brew install bash
 
+# Can list using the command `brew list --formula`
 PACKAGES=(
     ack
     ant
+    aom
     autoconf
     automake
-    boot2docker
+    cairo
+    circleci
     cmatrix
+    curl
     docker
     docker-compose
+    docker-machine
+    erlang
     ffmpeg
+    flac
+    fontconfig
+    freetype
+    frei0r
+    fribidi
+    gd
     gdbm
     gettext
+    giflib
     gifsicle
     git
+    glib
     gmp
+    gnutls
+    graphite2
     graphviz
+    gts
+    harfbuzz
     heroku
     heroku-node
     htop
     httpie
     hub
     icu4c
+    ilmbase
     imagemagick
     isl
+    jasper
+    jpeg
     jq
-    libjpeg
+    krb5
+    lame
+    leptonica
+    libass
+    libbluray
+    libde265
+    libevent
+    libffi
+    libheif
+    libidn2
     libmemcached
     libmpc
+    libogg
+    libomp
+    libpng
+    libsamplerate
+    libsndfile
+    libsoxr
+    libtasn1
+    libtiff
+    libtool
+    libunistring
+    libvidstab
+    libvorbis
+    libvpx
+    libyaml
+    little-cms2
+    lua
     lynx
+    lzo
     markdown
     maven
     memcached
     mercurial
     mpfr
     ncurses
+    netpbm
+    nettle
+    nmap
     node
-    node@8
-    npm
     oniguruma
-    openssl
+    opencore-amr
+    openexr
+    openjdk
+    openjpeg
+    openssl@1.1
+    opus
+    p11-kit
+    pcre
+    pcre2
+    perl
+    pixman
     pkg-config
+    pmd
     postgresql
     pypy
     python
@@ -74,17 +133,32 @@ PACKAGES=(
     rabbitmq
     readline
     rename
+    rtmpdump
+    rubberband
+    sdl2
+    shared-mime-info
+    snappy
+    speex
     sqlite
     ssh-copy-id
+    tcl-tk
     telnet
     terminal-notifier
+    tesseract
     the_silver_searcher
+    theora
     tmux
     tree
     typescript
+    unbound
     vim
+    webp
     wget
+    wxmac
+    x264
+    x265
     xmlstarlet
+    xvid
     xz
     yarn
     zsh
@@ -105,32 +179,29 @@ echo "Installing cask..."
 brew install caskroom/cask/brew-cask
 brew tap adoptopenjdk/openjdk
 
+# Can list using the command `brew list --cask`
 CASKS=(
-    microsoft-office
     adoptopenjdk8
-    spotify
-    colluquy
-    dropbox
-    firefox
-    flux
-    google-chrome
-    google-drive
-    gpgtools
-    iterm2
-    intellij-idea
-    macvim
-    sfdx
-    skype
-    slack
-    spectacle
-    sourcetree
-    sublime-text
-    vagrant
-    virtualbox
-    visual-studio-code
-    vlc
-    wireshark
     java
+    skype
+    spotify
+    vlc
+    dropbox
+    google-chrome
+    macvim
+    slack
+    sublime-text
+    wireshark
+    firefox
+    intellij-idea
+    microsoft-office
+    sourcetree
+    vagrant
+    flux
+    iterm2
+    sfdx
+    spectacle
+    visual-studio-code
 )
 
 echo "Installing cask apps..."
@@ -234,15 +305,18 @@ brew install powerlevel9k
 /usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Use Non-ASCII Font" false' ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c 'Set :"New Bookmarks":0:"Cursor Type" 1' ~/Library/Preferences/com.googlecode.iterm2.plist
 
+# can generate the list by executing `code --list-extensions`
 echo "Installing vs code extensions..."
 CODE_EXTENSIONS=(
     andys8.jest-snippets
     blzjns.vscode-raml
     chuckjonas.apex-pmd
+    coddx.coddx-alpha
     dbaeumer.vscode-eslint
     donjayamanne.githistory
     DotJoshJohnson.xml
     eamodio.gitlens
+    emilast.LogFileHighlighter
     Equinusocio.vsc-community-material-theme
     Equinusocio.vsc-material-theme
     equinusocio.vsc-material-theme-icons
@@ -253,9 +327,11 @@ CODE_EXTENSIONS=(
     maty.vscode-mocha-sidebar
     ms-azuretools.vscode-docker
     ms-python.python
+    ms-toolsai.jupyter
     oliversturm.fix-json
     redhat.java
     redhat.vscode-yaml
+    salesforce.salesforce-vscode-slds
     salesforce.salesforcedx-vscode
     salesforce.salesforcedx-vscode-apex
     salesforce.salesforcedx-vscode-apex-debugger
@@ -264,7 +340,9 @@ CODE_EXTENSIONS=(
     salesforce.salesforcedx-vscode-lightning
     salesforce.salesforcedx-vscode-lwc
     salesforce.salesforcedx-vscode-visualforce
+    scala-lang.scala
     shardulm94.trailing-spaces
+    spoonscen.es6-mocha-snippets
     VisualStudioExptTeam.vscodeintellicode
     vscjava.vscode-java-debug
     vscjava.vscode-java-dependency
