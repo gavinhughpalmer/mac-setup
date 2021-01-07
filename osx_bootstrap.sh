@@ -206,7 +206,7 @@ CASKS=(
 
 echo "Installing cask apps..."
 for CASK in ${CASKS[@]}; do
-    brew cask install ${CASK}
+    brew install --cask ${CASK}
 done
 
 echo "Installing fonts..."
