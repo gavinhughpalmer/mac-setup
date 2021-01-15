@@ -6,6 +6,7 @@
 
 echo "Starting bootstrapping"
 
+# TODO Set so the password can be remembered in all commands
 xcode-select --install
 
 # Check for Homebrew, install if we don't have it
@@ -60,8 +61,6 @@ PACKAGES=(
     graphviz
     gts
     harfbuzz
-    heroku
-    heroku-node
     htop
     httpie
     hub
@@ -176,7 +175,6 @@ echo "Cleaning up..."
 brew cleanup
 
 echo "Installing cask..."
-brew install caskroom/cask/brew-cask
 brew tap adoptopenjdk/openjdk
 
 # Can list using the command `brew list --cask`
@@ -185,22 +183,18 @@ CASKS=(
     java
     skype
     spotify
-    vlc
     dropbox
     google-chrome
     macvim
     slack
     sublime-text
-    wireshark
     firefox
     intellij-idea
     microsoft-office
     sourcetree
     vagrant
-    flux
     iterm2
     sfdx
-    spectacle
     visual-studio-code
 )
 
@@ -218,7 +212,7 @@ FONTS=(
     font-hack-nerd-font
 )
 for FONT in ${FONTS[@]}; do
-    brew cask install ${FONT}
+    brew install --cask ${FONT}
 done
 
 # MAS_APPS=(
@@ -226,30 +220,18 @@ done
 #     1107421413
 # )
 # echo "Installing Mac App Store apps..."
-# mas install ${MAS_APPS[@]}
-
-echo "Installing Python packages..."
-PYTHON_PACKAGES=(
-    ipython
-    virtualenv
-    virtualenvwrapper
-)
-for PYTHON_PACKAGE in ${PYTHON_PACKAGES[@]}; do
-    sudo pip install ${PYTHON_PACKAGE}
-done
-
-echo "Installing Ruby gems"
-RUBY_GEMS=(
-    bundler
-    filewatcher
-    cocoapods
-)
-for RUBY_GEM in ${RUBY_GEMS[@]}; do
-    sudo gem install ${RUBY_GEM}
-done
+# mas install ${MAS_APPS[@]} P
 
 echo "Installing global npm packages..."
-npm install marked -g
+NPM_PACKAGES-(
+    marked
+    prettier
+    prettier-plugin-apex
+    yarn
+)
+for NPM_PACKAGE in ${NPM_PACKAGES[@]}; do
+    npm install ${NPM_PACKAGE} -g
+done
 
 echo "Configuring OSX..."
 
@@ -363,8 +345,7 @@ echo "Installing/updating oh-my-zsh"
 if [[ -d ~/.oh-my-zsh ]]; then
     upgrade_oh_my_zsh
 else
-    chsh -s /bin/zsh
-    "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 echo "Bootstrapping complete"
