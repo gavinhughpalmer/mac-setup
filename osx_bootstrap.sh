@@ -223,7 +223,7 @@ done
 # mas install ${MAS_APPS[@]} P
 
 echo "Installing global npm packages..."
-NPM_PACKAGES-(
+NPM_PACKAGES=(
     marked
     prettier
     prettier-plugin-apex
