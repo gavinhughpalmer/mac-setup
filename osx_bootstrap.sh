@@ -337,10 +337,6 @@ for CODE_EXTENSION in ${CODE_EXTENSIONS[@]}; do
     code --install-extension ${CODE_EXTENSION}
 done
 
-cp templates/.zshrc ~/.zshrc
-cp templates/.custom_aliases ~/.custom_aliases
-cp -R templates/.custom_config ~/
-
 echo "Installing/updating oh-my-zsh"
 if [[ -d ~/.oh-my-zsh ]]; then
     upgrade_oh_my_zsh
@@ -348,4 +344,8 @@ else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+echo "Setting zsh config"
+cp templates/.zshrc ~/.zshrc
+cp templates/.custom_aliases ~/.custom_aliases
+cp -R templates/.custom_config ~/
 echo "Bootstrapping complete"
