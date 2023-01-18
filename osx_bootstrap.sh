@@ -348,4 +348,7 @@ echo "Setting zsh config"
 cp templates/.zshrc ~/.zshrc
 cp templates/.custom_aliases ~/.custom_aliases
 cp -R templates/.custom_config ~/
+
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
+
 echo "Bootstrapping complete"
