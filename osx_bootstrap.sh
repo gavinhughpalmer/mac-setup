@@ -351,4 +351,6 @@ cp -R templates/.custom_config ~/
 
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
 
+# To have the hack nerd font rendering correctly in the ITerm and VS Code window, this will need to be manually set (we probably could pull this in automatically if looked into)
+
 echo "Bootstrapping complete"
