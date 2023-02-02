@@ -353,4 +353,8 @@ sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Curre
 
 # To have the hack nerd font rendering correctly in the ITerm and VS Code window, this will need to be manually set (we probably could pull this in automatically if looked into)
 
+# Is there a way to pull in my email here? Maybe from the system user. Also would be useful to skip through the clicks needed here by defaulting values
+echo "Generate SSH public/private key pair"
+ssh-keygen -t rsa -b 4096 -C "gavinhughpalmer@gmail.com"
+
 echo "Bootstrapping complete"
