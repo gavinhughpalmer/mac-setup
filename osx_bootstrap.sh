@@ -273,7 +273,7 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 echo "Creating folder structure..."
-[[ ! -d workspace ]] && mkdir workspace
+[[ ! -d ~/workspace ]] && mkdir ~/workspace
 
 # TODO Pull in my setup from .zshrc file
 
