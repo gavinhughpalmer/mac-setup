@@ -121,3 +121,4 @@ fi
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
+SFDX_AC_ZSH_SETUP_PATH=/Users/gpalmer/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH
